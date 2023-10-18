@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum condition:String{
+enum Condition:String{
     case CVSL
     case POOR
     case FR
@@ -22,7 +22,7 @@ struct ComicToBeGraded{
     var company: String
     var releaseDate: Date
     var marketPriceAtNM: Double?
-    var coverCondition:
+    var coverCondition: Condition
     
     
 }
