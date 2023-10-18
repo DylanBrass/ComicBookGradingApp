@@ -7,20 +7,48 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        VStack{
+            
+            TabView {
+                Index()
+                    .tabItem {
+                        
+                        Label("Home", systemImage: "house")
+                    }
+                CoverCondition()
+                    .tabItem {
+                        
+                        Label("Cover", systemImage: "book.closed")
+                    }
+                PageDamageReport()
+                    .tabItem {
+                        
+                        Label("Pages", systemImage: "book")
+                    }
+                PickGrade()
+                    .tabItem {
+                        
+                        Label("Choose Grade", systemImage: "pencil.circle")
+                    }
+                
+                AllComics()
+                    .tabItem {
+                        
+                        Label("All Comics", systemImage: "books.vertical.fill")
+                    }
+            }
+            
         }
-        .padding()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+            
+        }
     }
 }
