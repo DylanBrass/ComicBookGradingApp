@@ -13,6 +13,7 @@
 		6388EB022AE0892D00BDB8C0 /* AllComics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388EB012AE0892D00BDB8C0 /* AllComics.swift */; };
 		6388EB042AE08A3200BDB8C0 /* PickGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388EB032AE08A3200BDB8C0 /* PickGrade.swift */; };
 		6388EB062AE08AA500BDB8C0 /* ComicGrading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388EB052AE08AA500BDB8C0 /* ComicGrading.swift */; };
+		6388EB082AE0912000BDB8C0 /* ViewModelComicGrading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388EB072AE0912000BDB8C0 /* ViewModelComicGrading.swift */; };
 		6398CDA92ADD6B3E00CF5089 /* ComicBookGradingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398CDA82ADD6B3E00CF5089 /* ComicBookGradingAppApp.swift */; };
 		6398CDAB2ADD6B3E00CF5089 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398CDAA2ADD6B3E00CF5089 /* ContentView.swift */; };
 		6398CDAD2ADD6B4100CF5089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6398CDAC2ADD6B4100CF5089 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		6388EB012AE0892D00BDB8C0 /* AllComics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllComics.swift; sourceTree = "<group>"; };
 		6388EB032AE08A3200BDB8C0 /* PickGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickGrade.swift; sourceTree = "<group>"; };
 		6388EB052AE08AA500BDB8C0 /* ComicGrading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicGrading.swift; sourceTree = "<group>"; };
+		6388EB072AE0912000BDB8C0 /* ViewModelComicGrading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelComicGrading.swift; sourceTree = "<group>"; };
 		6398CDA52ADD6B3E00CF5089 /* ComicBookGradingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComicBookGradingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6398CDA82ADD6B3E00CF5089 /* ComicBookGradingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicBookGradingAppApp.swift; sourceTree = "<group>"; };
 		6398CDAA2ADD6B3E00CF5089 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		6388EAFA2AE0862E00BDB8C0 /* ModelViews */ = {
 			isa = PBXGroup;
 			children = (
+				6388EB072AE0912000BDB8C0 /* ViewModelComicGrading.swift */,
 			);
 			path = ModelViews;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				6388EB062AE08AA500BDB8C0 /* ComicGrading.swift in Sources */,
 				6388EAFE2AE086B700BDB8C0 /* Index.swift in Sources */,
 				6398CDA92ADD6B3E00CF5089 /* ComicBookGradingAppApp.swift in Sources */,
+				6388EB082AE0912000BDB8C0 /* ViewModelComicGrading.swift in Sources */,
 				6388EB022AE0892D00BDB8C0 /* AllComics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
