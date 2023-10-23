@@ -12,6 +12,9 @@ class ComicGradingViewModel: ObservableObject{
     
     @Published var comic: ComicToBeGraded?
     
+    init(comicNew: ComicToBeGraded) {
+        self.comic = comicNew
+    }
     
     func startGrading(){
         

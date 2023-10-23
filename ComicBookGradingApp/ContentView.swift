@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  ComicBookGradingApp
-//
-//  Created by macuser on 2023-10-16.
-//
-
 import SwiftUI
 
 
@@ -17,7 +10,7 @@ struct ContentView: View {
                 Index()
                     .tabItem {
                         
-                        Label("Home", systemImage: "house")
+                Label("Home", systemImage: "house")
                     }
                 CoverCondition()
                     .tabItem {
@@ -31,13 +24,11 @@ struct ContentView: View {
                     }
                 PickGrade()
                     .tabItem {
-                        
                         Label("Choose Grade", systemImage: "pencil.circle")
                     }
                 
                 AllComics()
                     .tabItem {
-                        
                         Label("All Comics", systemImage: "books.vertical.fill")
                     }
             }
