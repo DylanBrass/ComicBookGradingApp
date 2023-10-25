@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct PageDamageReport: View {
+    
+    @ObservedObject var comic:ComicGradingViewModel
+    
     var body: some View {
         Text("Page Damage Report")
+        Text(comic.comic!.title)
     }
 }

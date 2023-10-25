@@ -3,11 +3,14 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @ObservedObject var comic = ComicGradingViewModel()
+    
     var body: some View {
         VStack{
             
             TabView {
-                Index()
+                Index(comic: comic)
                     .tabItem {
                         
                 Label("Home", systemImage: "house")
@@ -17,11 +20,13 @@ struct ContentView: View {
                         
                         Label("Cover", systemImage: "book.closed")
                     }
-                PageDamageReport()
+                
+                PageDamageReport(comic: comic)
                     .tabItem {
                         
                         Label("Pages", systemImage: "book")
                     }
+                
                 PickGrade()
                     .tabItem {
                         Label("Choose Grade", systemImage: "pencil.circle")

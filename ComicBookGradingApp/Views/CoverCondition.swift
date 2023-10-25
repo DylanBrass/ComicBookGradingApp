@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CoverCondition: View {
+    
+    
     var body: some View {
         Text("Cover Condoition")
     }

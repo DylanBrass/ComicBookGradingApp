@@ -11,6 +11,7 @@ import SwiftUI
 
 struct Index: View {
     @State var showSheet = false
+    @ObservedObject var comic:ComicGradingViewModel
 
     var body: some View {
 
@@ -32,7 +33,7 @@ struct Index: View {
         }.sheet(isPresented: $showSheet) {
             print("Sheet dismissed!")
         } content: {
-            CreateComicSheet()
+            CreateComicSheet(comic: comic)
         }
     }
 }
