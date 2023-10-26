@@ -9,7 +9,7 @@ import Foundation
 
 
 
-enum Condition:Int{
+enum Condition:Int, CaseIterable{
     case cvls = 1
     case poor = 2
     case fr = 3
@@ -35,4 +35,10 @@ enum Condition:Int{
     case nmPlus = 23
     case nmMt = 24
     case mint = 25
+    
+    
+    var name: String{
+        get {return String(describing: self)}
+    }
+    
 }

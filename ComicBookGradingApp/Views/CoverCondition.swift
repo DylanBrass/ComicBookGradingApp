@@ -11,6 +11,9 @@ struct CoverCondition: View {
     
     
     var body: some View {
-        Text("Cover Condoition")
+        VStack{
+            Text("Cover Condoition")
+        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
+
     }
 }

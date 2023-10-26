@@ -9,6 +9,9 @@ import SwiftUI
 
 struct AllComics: View {
     var body: some View {
-        Text("All Comics")
+        VStack{
+            Text("All Comics")
+        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
+
     }
 }
