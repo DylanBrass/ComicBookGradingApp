@@ -22,11 +22,20 @@ struct Index: View {
             Button(action: {
                 showSheet = !showSheet
             }, label: {
-                Text("Start Grading a Comic")
-                    .padding()
-                    .background(Color(#colorLiteral(red: 0.9, green: 0.5, blue: 0.5, alpha: 1)))
-                    .foregroundColor(.black)
-                    .cornerRadius(10)
+                if(comic.comicGraded == nil){
+                    Text("Start Grading a Comic")
+                        .padding()
+                        .background(Color(#colorLiteral(red: 0.9, green: 0.5, blue: 0.5, alpha: 1)))
+                        .foregroundColor(.black)
+                        .cornerRadius(10)
+                }else{
+                    Text("Update  Comic")
+                        .padding()
+                        .background(Color(#colorLiteral(red: 0.9, green: 0.5, blue: 0.5, alpha: 1)))
+                        .foregroundColor(.black)
+                        .cornerRadius(10)
+                    
+                }
             })
         
 

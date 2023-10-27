@@ -8,7 +8,14 @@
 import Foundation
 
 
-enum Cover:String{
+enum Cover: String, CaseIterable {
     case BACK
     case FRONT
+
+    var name: String {
+        switch self {
+        case .BACK: return "Back Cover"
+        case .FRONT: return "Front Cover"
+        }
+    }
 }

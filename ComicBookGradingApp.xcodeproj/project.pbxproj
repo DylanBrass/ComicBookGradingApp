@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		638842A82AE6A1C400634E59 /* CornerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638842A72AE6A1C400634E59 /* CornerEnum.swift */; };
 		638842AA2AE6A1EC00634E59 /* coverEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638842A92AE6A1EC00634E59 /* coverEnum.swift */; };
 		638842AC2AE6A21300634E59 /* conditionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638842AB2AE6A21300634E59 /* conditionEnum.swift */; };
 		638842AF2AE6ADA800634E59 /* createComicSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638842AE2AE6ADA800634E59 /* createComicSheet.swift */; };
@@ -45,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		638842A72AE6A1C400634E59 /* CornerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerEnum.swift; sourceTree = "<group>"; };
 		638842A92AE6A1EC00634E59 /* coverEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coverEnum.swift; sourceTree = "<group>"; };
 		638842AB2AE6A21300634E59 /* conditionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conditionEnum.swift; sourceTree = "<group>"; };
 		638842AE2AE6ADA800634E59 /* createComicSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createComicSheet.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				6388EB052AE08AA500BDB8C0 /* ComicGrading.swift */,
-				638842A72AE6A1C400634E59 /* CornerEnum.swift */,
 				638842A92AE6A1EC00634E59 /* coverEnum.swift */,
 				638842AB2AE6A21300634E59 /* conditionEnum.swift */,
 			);
@@ -328,7 +325,6 @@
 				638842AC2AE6A21300634E59 /* conditionEnum.swift in Sources */,
 				6398CDAB2ADD6B3E00CF5089 /* ContentView.swift in Sources */,
 				638842AA2AE6A1EC00634E59 /* coverEnum.swift in Sources */,
-				638842A82AE6A1C400634E59 /* CornerEnum.swift in Sources */,
 				6388EB002AE0877F00BDB8C0 /* PageDamageReport.swift in Sources */,
 				6388EB062AE08AA500BDB8C0 /* ComicGrading.swift in Sources */,
 				6388EAFE2AE086B700BDB8C0 /* Index.swift in Sources */,

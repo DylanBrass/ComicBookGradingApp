@@ -7,9 +7,8 @@
 
 import Foundation
 
-
-
-enum Condition:Int, CaseIterable{
+enum Condition: Int, CaseIterable {
+    case noneSelected = 0
     case cvls = 1
     case poor = 2
     case fr = 3
@@ -35,10 +34,35 @@ enum Condition:Int, CaseIterable{
     case nmPlus = 23
     case nmMt = 24
     case mint = 25
-    
-    
-    var name: String{
-        get {return String(describing: self)}
+
+    var name: String {
+        switch self {
+        case .noneSelected: return "None Selected"
+        case .cvls: return "Coverless"
+        case .poor: return "Poor"
+        case .fr: return "Fair"
+        case .frGd: return "Fair/Good"
+        case .gdMinus: return "Good-"
+        case .gd: return "Good"
+        case .gdPlus: return "Good+"
+        case .gdVg: return "Good/Very Good"
+        case .vgMinus: return "Very Good-"
+        case .vg: return "Very Good"
+        case .vgPlus: return "Very Good+"
+        case .vgFn: return "Very Good/Fine"
+        case .fnMinus: return "Fine-"
+        case .fn: return "Fine"
+        case .fnPlus: return "Fine+"
+        case .fnVf: return "Fine/Very Fine"
+        case .vfMinus: return "Very Fine-"
+        case .vf: return "Very Fine"
+        case .vfPlus: return "Very Fine+"
+        case .vfNm: return "Very Fine/Near Mint"
+        case .nmMinus: return "Near Mint-"
+        case .nm: return "Near Mint"
+        case .nmPlus: return "Near Mint+"
+        case .nmMt: return "Near Mint/Mint"
+        case .mint: return "Mint"
+        }
     }
-    
 }

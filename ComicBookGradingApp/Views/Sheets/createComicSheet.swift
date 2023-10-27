@@ -52,21 +52,36 @@ struct CreateComicSheet: View {
                         .foregroundColor(.black)
                         .cornerRadius(10)
                 })
+                if(comic.comicGraded != nil){
+                    Button(action: {
+                        comic.endTracking()
+                        title = comic.comicGraded?.title ?? ""
+                        company = comic.comicGraded?.company ?? ""
+                        num = comic.comicGraded?.number?.description ?? ""
+                    }, label: {
+                        Text("Clear Selection")
+                            .padding()
+                            .background(Color.red)
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                    })
+                }
+                
                 Button(action: {
-                    
-                    var number: Int? = nil
-                    
-                    if(num != ""){
-                        number = Int(num)
+                        var number: Int? = nil
+                        
+                        if(num != ""){
+                            number = Int(num)
+                        }
+                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, coverCondition: [:])
+
+                    if(comic.comicGraded == nil){
+                        comic.startTracking(comicNew: comicBook)
+
+                    }else{
+                        comic.updateCimicGraded(update: comicBook)
                     }
                   
-                    
-                    
-                    
-                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, coverCondition: [:], cornerCondition: [:])
-                    
-                    comic.startTracking(comicNew: comicBook)
-                    
                     dismiss()
                 }, label: {
                     Text("Confirm")
@@ -74,15 +89,13 @@ struct CreateComicSheet: View {
                         .background(Color.green)
                         .foregroundColor(.black)
                         .cornerRadius(10)
-                    
-                    
                 })
             }
         }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
             .onAppear(){
-                title = comic.comic?.title ?? ""
-                company = comic.comic?.company ?? ""
-                num = comic.comic?.number?.description ?? ""
+                title = comic.comicGraded?.title ?? ""
+                company = comic.comicGraded?.company ?? ""
+                num = comic.comicGraded?.number?.description ?? ""
             }
 
     }
