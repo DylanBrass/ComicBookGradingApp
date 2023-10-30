@@ -27,7 +27,11 @@ struct PickGrade: View {
             }else{
                 Text("Issue Number : \(comic.comicGraded?.number ?? 0)")
             }
-            
+            if(comic.comicGraded?.marketPriceAtNM == nil){
+                Text("Price : Not Set")
+            }else{
+                Text("Price : \(String(format: "%.2f",comic.comicGraded?.marketPriceAtNM ?? 0)) $")
+            }
             if(comic.comicGraded?.releaseDate == nil){
                 Text("Release Date : Not Set")
             }else{
@@ -69,7 +73,9 @@ struct PickGrade: View {
                 }
             }
             Button(action: {
-                comic.saveComicGrading(finishedComic: comic.comicGraded!)
+                
+                comic.saveComicGrading(grade: selectedGrade)
+                page = 5
             }, label: {
                 Text("Finish Grading")
                     .padding(10)
@@ -89,6 +95,8 @@ struct PickGrade: View {
                         formattedDate = ""
                 }else{
                     formattedDate = formatter.string(from: comic.comicGraded?.releaseDate ?? Date.now)
+                    selectedGrade = comic.comicGraded?.overallCondition ?? Condition.noneSelected
+
                 }
             }
 

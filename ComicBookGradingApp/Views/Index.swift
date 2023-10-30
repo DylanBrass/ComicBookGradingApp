@@ -19,7 +19,8 @@ struct Index: View {
         VStack{
             VStack(spacing:0){
                 Text("Menard Comic Grading").font(.title).padding()
-                
+                Spacer()
+                Image("Logo_EN_225x").padding(.bottom, 100)
                 Button(action: {
                     showSheet = !showSheet
                 }, label: {
@@ -39,6 +40,8 @@ struct Index: View {
                         
                     }
                 })
+                
+                Spacer()
             }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
         }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .top)
             .sheet(isPresented: $showSheet) {

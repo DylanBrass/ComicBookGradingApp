@@ -63,4 +63,36 @@ enum Condition: Int, CaseIterable {
         case .mint: return "Mint"
         }
     }
+    
+    public static func getNameFromValue(value: Int) -> String{
+        switch value{
+        case 0: return "None Selected"
+        case 1: return "Poor"
+        case 2: return "Fair"
+        case 3: return "Fair/Good"
+        case 4: return "Good-"
+        case 5: return "Good"
+        case 6: return "Good+"
+        case 7: return "Good/Very Good"
+        case 8: return "Very Good-"
+        case 9: return "Very Good"
+        case 10: return "Very Good+"
+        case 11: return "Very Good/Fine"
+        case 12: return "Fine-"
+        case 13: return "Fine"
+        case 14: return "Fine+"
+        case 15: return "Fine/Very Fine"
+        case 16: return "Very Fine-"
+        case 17: return "Very Fine"
+        case 18: return "Very Fine+"
+        case 19: return "Very Fine/Near Mint"
+        case 20: return "Near Mint-"
+        case 21: return "Near Mint"
+        case 22: return "Near Mint+"
+        case 23: return "Near Mint/Mint"
+        case 24: return "Mint"
+        default:
+            return "None Selected"
+        }
+    }
 }

@@ -25,6 +25,7 @@ struct CreateComicSheet: View {
     
     
     @State public var num: String = ""
+    @State public var price: String = ""
     
     @State public var date: Date = Date.now
 
@@ -34,15 +35,26 @@ struct CreateComicSheet: View {
         VStack {
             Text("Enter Comic Information").font(.title)
             
-            TextField("Title :",text: $title).textFieldStyle(.roundedBorder).padding()
-            TextField("Company :",text: $company).textFieldStyle(.roundedBorder).padding()
-            TextField("Issue Number :", text: $num).textFieldStyle(.roundedBorder).padding().keyboardType(.decimalPad)
-            DatePicker(
-                   "Release Date",
-                   selection: $date,
-                   displayedComponents: [.date]
-            ).datePickerStyle(.wheel)
-              
+            Text("Title :")
+            TextField("Title",text: $title).border(Color.black).textFieldStyle(.roundedBorder)
+            
+            Text("Company :")
+            TextField("Company",text: $company).border(Color.black).textFieldStyle(.roundedBorder)
+            
+            Text("Issue Number :")
+            TextField("Issue Number :", text: $num).border(Color.black).textFieldStyle(.roundedBorder).keyboardType(.decimalPad)
+            
+            
+            Text("Price At Near Mint :")
+            TextField("Issue Number :", text: $price).border(Color.black).textFieldStyle(.roundedBorder).keyboardType(.decimalPad)
+            
+            HStack{
+                DatePicker(
+                    "Release Date :",
+                    selection: $date,
+                    displayedComponents: [.date]
+                ).datePickerStyle(.compact)
+            }
             
             HStack{
                 Button(action: {
@@ -60,6 +72,7 @@ struct CreateComicSheet: View {
                         title = comic.comicGraded?.title ?? ""
                         company = comic.comicGraded?.company ?? ""
                         num = comic.comicGraded?.number?.description ?? ""
+                        price = comic.comicGraded?.marketPriceAtNM?.description ?? ""
                     }, label: {
                         Text("Clear Selection")
                             .padding()
@@ -71,17 +84,20 @@ struct CreateComicSheet: View {
                 
                 Button(action: {
                         var number: Int? = nil
-                        
+                    var priceNum: Double? = nil
                         if(num != ""){
                             number = Int(num)
                         }
-                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, coverCondition: [:])
+                    if(price != ""){
+                        priceNum = Double(price)
+                    }
+                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, marketPriceAtNM: priceNum, coverCondition: [:])
 
                     if(comic.comicGraded == nil){
                         comic.startTracking(comicNew: comicBook)
 
                     }else{
-                        comic.updateCimicGraded(update: comicBook)
+                        comic.updateComicGraded(update: comicBook)
                     }
                     page = 2
                     dismiss()
@@ -98,6 +114,8 @@ struct CreateComicSheet: View {
                 title = comic.comicGraded?.title ?? ""
                 company = comic.comicGraded?.company ?? ""
                 num = comic.comicGraded?.number?.description ?? ""
+                price = comic.comicGraded?.marketPriceAtNM?.description ?? ""
+
             }
 
     }

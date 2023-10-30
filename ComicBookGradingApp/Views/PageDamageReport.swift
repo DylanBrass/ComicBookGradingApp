@@ -38,8 +38,13 @@ struct PageDamageReport: View {
                         
                     }
                 }
-            }.border(.black)
-                TextField("Page Number :", text: $num).textFieldStyle(.roundedBorder).padding().keyboardType(.decimalPad)
+            }.border(.black).frame(height: 200)
+            
+            HStack{
+                Text("Enter Page # :").padding()
+                TextField("Page Number :", text: $num).border(Color.black).textFieldStyle(.roundedBorder).padding().keyboardType(.decimalPad)
+            }
+            
                 Menu{
                     Picker("Pick Condition", selection: $selectedCondition){
                         
@@ -73,9 +78,9 @@ struct PageDamageReport: View {
                     
                     
                 })
-                
+            Spacer()
+
             }
-            
         }
     }
 

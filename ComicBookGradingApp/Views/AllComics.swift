@@ -13,17 +13,17 @@ struct AllComics: View {
     
     var body: some View {
         VStack{
-            Text("All Comics")
-            
-            ForEach(comicVM.allComics, id: \.id){
-                comic in
-                Button(action: {
-                    comicVM.editComic(id: comic.id)
-                }, label: {
-                    Text("\(comic.id) : \(comic.title)")
-                })
+            Text("All Previously Graded Comics").font(.title).padding(.top, 4)
+            List{
+                ForEach(comicVM.allComics, id: \.id){
+                    comic in
+                    Button(action: {
+                        comicVM.editComic(id: comic.id)
+                    }, label: {
+                        Text("\(comic.title) : \(Condition.getNameFromValue(value:comicVM.getOverallGrade(comic: comic)))")
+                    })
+                }
             }
-            
         }
 
     }

@@ -80,10 +80,12 @@ struct ContentView: View {
                                     Label("Choose Grade", systemImage: "pencil.circle")
                                 }.tag(4)
                         }
+                        if(!comic.anyComics()){
                             AllComics(comicVM: comic)
                                 .tabItem {
                                     Label("All Comics", systemImage: "books.vertical.fill")
                                 }.tag(5)
+                        }
                         
                     }
                 }

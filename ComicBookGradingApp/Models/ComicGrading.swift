@@ -16,6 +16,20 @@ struct ComicToBeGraded{
     var marketPriceAtNM: Double?
     var coverCondition: [Cover: Condition]
     var damagedPages : [Int: Condition]
+    var overallCondition : Condition?
+    
+    init(title: String, number: Int? = nil, company: String, releaseDate: Date, marketPriceAtNM: Double? = nil, coverCondition: [Cover : Condition], damagedPages: [Int : Condition] = [:], overall : Condition, price : Double) {
+        self.title = title
+        self.number = number
+        self.company = company
+        self.releaseDate = releaseDate
+        self.marketPriceAtNM = marketPriceAtNM
+        self.coverCondition = coverCondition
+        self.damagedPages = damagedPages
+        self.overallCondition = overall
+        self.marketPriceAtNM = price
+    }
+    
     
     init(title: String, number: Int? = nil, company: String, releaseDate: Date, marketPriceAtNM: Double? = nil, coverCondition: [Cover : Condition], damagedPages: [Int : Condition] = [:]) {
         self.title = title
