@@ -9,36 +9,34 @@ import Foundation
 
 enum Condition: Int, CaseIterable {
     case noneSelected = 0
-    case cvls = 1
-    case poor = 2
-    case fr = 3
-    case frGd = 4
-    case gdMinus = 5
-    case gd = 6
-    case gdPlus = 7
-    case gdVg = 8
-    case vgMinus = 9
-    case vg = 10
-    case vgPlus = 11
-    case vgFn = 12
-    case fnMinus = 13
-    case fn = 14
-    case fnPlus = 15
-    case fnVf = 16
-    case vfMinus = 17
-    case vf = 18
-    case vfPlus = 19
-    case vfNm = 20
-    case nmMinus = 21
-    case nm = 22
-    case nmPlus = 23
-    case nmMt = 24
-    case mint = 25
+    case poor = 1
+    case fr = 2
+    case frGd = 3
+    case gdMinus = 4
+    case gd = 5
+    case gdPlus = 6
+    case gdVg = 7
+    case vgMinus = 8
+    case vg = 9
+    case vgPlus = 10
+    case vgFn = 11
+    case fnMinus = 12
+    case fn = 13
+    case fnPlus = 14
+    case fnVf = 15
+    case vfMinus = 16
+    case vf = 17
+    case vfPlus = 18
+    case vfNm = 19
+    case nmMinus = 20
+    case nm = 21
+    case nmPlus = 22
+    case nmMt = 23
+    case mint = 24
 
     var name: String {
         switch self {
         case .noneSelected: return "None Selected"
-        case .cvls: return "Coverless"
         case .poor: return "Poor"
         case .fr: return "Fair"
         case .frGd: return "Fair/Good"

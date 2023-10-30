@@ -12,9 +12,11 @@ import SwiftUI
 
 struct CreateComicSheet: View {
     @Environment(\.dismiss) private var dismiss
-    init(comic: ComicGradingViewModel) {
-        self.comic = comic
-    }
+
+  
+    
+    @Binding var page: Int
+
     @ObservedObject var comic:ComicGradingViewModel
     
     @State public var title: String = ""
@@ -39,7 +41,7 @@ struct CreateComicSheet: View {
                    "Release Date",
                    selection: $date,
                    displayedComponents: [.date]
-            ).datePickerStyle(.graphical)
+            ).datePickerStyle(.wheel)
               
             
             HStack{
@@ -81,7 +83,7 @@ struct CreateComicSheet: View {
                     }else{
                         comic.updateCimicGraded(update: comicBook)
                     }
-                  
+                    page = 2
                     dismiss()
                 }, label: {
                     Text("Confirm")
@@ -91,7 +93,7 @@ struct CreateComicSheet: View {
                         .cornerRadius(10)
                 })
             }
-        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
+        }.frame(maxWidth: .infinity,maxHeight: .infinity)
             .onAppear(){
                 title = comic.comicGraded?.title ?? ""
                 company = comic.comicGraded?.company ?? ""

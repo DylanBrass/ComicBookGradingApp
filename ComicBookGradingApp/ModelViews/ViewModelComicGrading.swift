@@ -18,6 +18,10 @@ class ComicGradingViewModel: ObservableObject{
         
     }
     
+    func removePage(page: Int){
+        comicGraded?.damagedPages.removeValue(forKey: page)
+    }
+    
     func startTracking(comicNew: ComicToBeGraded) {
         self.comicGraded = comicNew
     }
@@ -55,6 +59,6 @@ class ComicGradingViewModel: ObservableObject{
     }
     
     func addDamagedPage(page: Int, cond: Condition){
-        comicGraded?.damagedPages?.updateValue(cond, forKey: page)
+        comicGraded?.damagedPages.updateValue(cond, forKey: page)
     }
 }

@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct CoverCondition: View {
-    
+    @Binding var page: Int
+
     @State var selectedCover = Cover.FRONT
-    @State var selectedCondition = Condition.cvls
+    @State var selectedCondition = Condition.noneSelected
     @ObservedObject var comic: ComicGradingViewModel
     var body: some View {
         VStack{
+       
+
+            Text("Cover Condition").font(.title).padding(.top, 4)
             
-            Text("Cover Condition")
-            
-            
+            List{
                 ForEach(Array(comic.comicGraded?.coverCondition.keys ?? [:].keys), id: \.self){
                     key in
                     
                     Text("\(key.name) : \(comic.comicGraded?.coverCondition[key]?.name ?? "") ")
                     
                 }
-       
+            }.frame(height: 150)
             
             Picker("Pick Cover", selection: $selectedCover){
                 
@@ -35,31 +37,35 @@ struct CoverCondition: View {
              
                 
             }.pickerStyle(.inline)
-            
-            Picker("Pick Condition:", selection: $selectedCondition){
-                
-                ForEach(Condition.allCases, id: \.self){
-                    option in
-                    Text("\(option.name)")
+            HStack{
+                Text("Select Condition : ")
+                Menu{
+                    Picker("Pick Condition", selection: $selectedCondition){
+                        
+                        ForEach(Condition.allCases, id: \.self){
+                            option in
+                            Text("\(option.name)")
+                        }
+                    }.pickerStyle(.inline)
+                } label: {
+                    Text("\(selectedCondition.name)") .padding(10)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-            }.pickerStyle(.inline)
+                
             
-            
+            }
             Button(action: {
-                
                 comic.coverGrading(cover: selectedCover, condition: selectedCondition)
-                
             }, label: {
                 Text("Confirm")
-                    .padding()
+                    .padding(10)
                     .background(Color.green)
                     .foregroundColor(.black)
                     .cornerRadius(10)
-                
-                
             })
-            
-        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
-
+            Spacer()
+        }.frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .top)
     }
 }

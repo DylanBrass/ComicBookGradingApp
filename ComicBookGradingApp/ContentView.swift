@@ -5,45 +5,90 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var comic = ComicGradingViewModel()
-
+    @State var page = 1
     var body: some View {
       
         ZStack{
 
-            VStack{
-                Text("Currently Grading \(comic.comicGraded?.title ?? "No Comic")")
+            VStack(spacing:0){
+                HStack{
+                    Text("Currently Grading \(comic.comicGraded?.title ?? "No Comic")").font(.title2)
+                        .padding()
+                    if(comic.comicGraded != nil){
+                        Button(action: {
+                            comic.endTracking()
+                        }, label: {
+                            Text("Clear")
+                                .padding()
+                                .foregroundColor(.blue)
+                                .cornerRadius(10)
+                        })
+                    }
+                    
+                }
+                if(comic.comicGraded != nil){
+                    HStack(alignment: .top){
+                        if(page > 1){
+                            Button{
+                                    page -= 1
+                            }label: {
+                                Image(systemName: "arrowshape.turn.up.left.circle.fill")
+                                    .padding().foregroundStyle(.white)
+                                    .background(.blue)
+                                    .clipShape(.circle)
+                                    .scaleEffect(0.75)
+                            }
+                        }
+                        Spacer()
+                        if(page < 5){
+                            Button{
+                                    page += 1
+                            }label: {
+                                Image(systemName: "arrowshape.turn.up.right.circle.fill")
+                                    .padding().foregroundStyle(.white)
+                                    .background(.blue)
+                                    .clipShape(.circle)
+                                    .scaleEffect(0.75)
 
-                TabView {
+                            }
+                        }
+                    }
+                    Divider().frame(height: 2).overlay(.black)
+
+                    
+                }
+                TabView(selection: $page){
                     Group{
-                        Index(comic: comic)
+                        Index(comic: comic, page:$page)
                             .tabItem {
                                 Label("Home", systemImage: "house")
-                            }
-                        CoverCondition(comic: comic)
-                            .tabItem {
-                                
-                                Label("Cover", systemImage: "book.closed")
-                            }
-                        PageDamageReport(comic: comic)
-                            .tabItem {
-                                
-                                Label("Pages", systemImage: "book")
-                            }
+                            }.tag(1)
+                        if(comic.comicGraded != nil){
+                            CoverCondition(page: $page ,comic: comic)
+                                .tabItem {
+                                    
+                                    Label("Cover", systemImage: "book.closed")
+                                }.tag(2)
+                            PageDamageReport(page:$page, comic: comic)
+                                .tabItem {
+                                    
+                                    Label("Pages", systemImage: "book")
+                                }.tag(3)
+                            
+                            PickGrade(page: $page, comic: comic)
+                                .tabItem {
+                                    Label("Choose Grade", systemImage: "pencil.circle")
+                                }.tag(4)
+                        }
+                            AllComics(comicVM: comic)
+                                .tabItem {
+                                    Label("All Comics", systemImage: "books.vertical.fill")
+                                }.tag(5)
                         
-                        PickGrade(comic: comic)
-                            .tabItem {
-                                Label("Choose Grade", systemImage: "pencil.circle")
-                            }
-                        
-                        AllComics(comicVM: comic)
-                            .tabItem {
-                                Label("All Comics", systemImage: "books.vertical.fill")
-                            }
                     }
                 }
-            }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
-            
-        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
+            }
+        }
         
     }
     struct ContentView_Previews: PreviewProvider {

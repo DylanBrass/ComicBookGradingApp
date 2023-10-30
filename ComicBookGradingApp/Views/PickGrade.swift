@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct PickGrade: View {
+    @Binding var page: Int
     
     @ObservedObject var comic: ComicGradingViewModel
     
     @State var formattedDate: String = ""
     
-    @State var selectedGrade: Condition = Condition.cvls
+    @State var selectedGrade: Condition = Condition.noneSelected
     
     var body: some View {
-        VStack{
-            Text("Current Informatio :").font(.title)
+        VStack(alignment: .center){
+            Text("Current Information :").font(.title).padding(.top, 4)
+           
             Text("Title : \(comic.comicGraded?.title ?? "Not Set")")
             Text("Company : \(comic.comicGraded?.company ?? "Not Set")")
             if(comic.comicGraded?.number == nil){
@@ -31,36 +33,55 @@ struct PickGrade: View {
             }else{
                 Text("Release Date : \(formattedDate)")
             }
-            
+            Text("Covers : ").padding(.top,2).font(.title3)
             List{
-                ForEach(Array(comic.comicGraded?.damagedPages!.keys ?? [:].keys), id: \.self){
+                ForEach(Array(comic.comicGraded?.coverCondition.keys ?? [:].keys), id: \.self){
                     key in
                     
-                    Text("\(key) : \(comic.comicGraded?.damagedPages![key]!.name ?? "") ")
+                    Text("\(key.name) : \(comic.comicGraded?.coverCondition[key]?.name ?? "") ")
+                    
                 }
-            }.listStyle(.plain).frame(height: 100)
+            }.frame(height: 125).border(.black)
+            Text("Pages : ").padding(.top,2).font(.title3)
+            List{
+                ForEach(Array(comic.comicGraded?.damagedPages.keys.sorted(by: <) ?? [:].keys.sorted(by: <)), id: \.self){
+                    key in
+                    
+                    Text("\(key) : \(comic.comicGraded?.damagedPages[key]!.name ?? "") ")
+                }
+            }.frame(height: 100).border(.black)
     
             
-            Picker("Pick Overall Grade", selection: $selectedGrade){
-                ForEach(Condition.allCases, id: \.self){
-                    option in
-                    Text("\(option.name)")
+            HStack{
+                Text("Pick Overall Grade :")
+                Menu{
+                    Picker("Pick Overall Grade", selection: $selectedGrade){
+                        ForEach(Condition.allCases, id: \.self){
+                            option in
+                            Text("\(option.name)")
+                        }
+                    }.pickerStyle(.inline)
+                } label: {
+                    Text("\(selectedGrade.name)") .padding(10)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                 }
-            }.pickerStyle(.inline)
-            
-            
-            
+            }
             Button(action: {
                 comic.saveComicGrading(finishedComic: comic.comicGraded!)
             }, label: {
                 Text("Finish Grading")
-                    .padding()
-                    .background(Color(#colorLiteral(red: 0.9, green: 0.5, blue: 0.5, alpha: 1)))
+                    .padding(10)
+                    .background(Color.green)
                     .foregroundColor(.black)
                     .cornerRadius(10)
             })
             
-        }.frame(maxWidth: .infinity,maxHeight: .infinity).background(Color(#colorLiteral(red: 0.8, green: 0.6, blue: 0.6, alpha: 1)))
+            Spacer()
+            
+            
+        }
             .onAppear(){
                 let formatter = DateFormatter()
                 formatter.dateFormat = "MM/dd/yyyy"
