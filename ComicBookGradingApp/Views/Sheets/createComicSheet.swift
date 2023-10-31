@@ -91,8 +91,10 @@ struct CreateComicSheet: View {
                     if(price != ""){
                         priceNum = Double(price)
                     }
-                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, marketPriceAtNM: priceNum, coverCondition: [:])
-
+                    let overallCondition = comic.comicGraded?.overallCondition ?? .noneSelected
+                    let pages = comic.comicGraded?.damagedPages ?? [:]
+                    let cover = comic.comicGraded?.coverCondition ?? [:]
+                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, marketPriceAtNM: priceNum, coverCondition: cover, damagedPages: pages, overall: overallCondition, price: comic.comicGraded?.marketPriceAtNM ?? 0)
                     if(comic.comicGraded == nil){
                         comic.startTracking(comicNew: comicBook)
 

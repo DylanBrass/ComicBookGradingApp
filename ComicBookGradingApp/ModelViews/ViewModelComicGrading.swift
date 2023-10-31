@@ -28,7 +28,12 @@ class ComicGradingViewModel: ObservableObject{
         var total = 0
         if(count > 0){
             for grade in comic.coverCondition.values {
-                total += grade.rawValue
+                if(grade == .noneSelected){
+                    total += comic.overallCondition?.rawValue ?? 0
+                }
+                else{
+                    total += grade.rawValue
+                }
             }
             print("Total for covers : \(total)")
             return total / count
@@ -41,7 +46,11 @@ class ComicGradingViewModel: ObservableObject{
         var total = 0
         if(count > 0){
             for grade in comic.damagedPages.values {
-                total += grade.rawValue
+                if(grade == .noneSelected){
+                    total += comic.overallCondition?.rawValue ?? 0
+                }else{
+                    total += grade.rawValue
+                }
             }
             print("Total for pages : \(total)")
 
