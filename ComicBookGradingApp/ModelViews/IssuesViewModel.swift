@@ -8,13 +8,12 @@
 import Foundation
 
 class IssuesViewModel: ObservableObject{
-    let service = MetronApiCallService()
     
     @Published var issues: IssueResponse? = nil
     
     func GetIssues(page:Int){
         print("In test fetch")
-        service.fetchAll(page: page, completion:{
+        MetronApiCallService.apiCallService.fetchAll(page: page, completion:{
             data in
             self.issues = data ?? nil
         }

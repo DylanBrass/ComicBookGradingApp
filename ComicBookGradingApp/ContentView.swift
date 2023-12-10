@@ -2,18 +2,31 @@ import SwiftUI
 
 struct ContentView: View {
     
-  
-
     @ObservedObject var comic = ComicGradingViewModel()
     @State var page = 1
     @State private var isSheetPresented = false
+    
+    @State private var userName: String? = UserDefaults.standard.string(forKey: "UserName")
+    @State var isNameInputSheetPresented = false
+    
     var body: some View {
         
         ZStack{
             
             VStack(spacing:0){
+                if let userName = userName {
+                    Button(action: {
+                        isNameInputSheetPresented = true
+                        
+                    }, label: {
+                        Text("Welcome, \(userName)")
+                            .font(.headline)
+                            .padding(.top, 5)
+                    })
+                    
+                }
                 HStack{
-                    Text("Currently Grading \(comic.comicGraded?.title ?? "No Comic")").font(.title2)
+                    Text("Currently Grading \(comic.comicGraded?.title ?? "No Comics")").font(.subheadline)
                         .padding()
                     if(comic.comicGraded != nil){
                         Button(action: {
@@ -27,6 +40,8 @@ struct ContentView: View {
                     }
                     
                 }
+               
+              
                 if(comic.comicGraded != nil){
                     HStack(alignment: .top){
                         if(page > 1){
@@ -92,21 +107,57 @@ struct ContentView: View {
                 }
             }
         }.onAppear(perform: {
-        }) .gesture(
+            comic.getAllComics()
+            print(userName)
+            isNameInputSheetPresented = userName == nil
+        })
+        .gesture(
             MagnificationGesture()
                 .onChanged { value in
                     if value > 1.5 {
                         isSheetPresented = true
                     }
                 }
-              
         ).sheet(isPresented: $isSheetPresented) {
             ViewComicaSheet()
+        }.sheet(isPresented: $isNameInputSheetPresented) {
+            NameInputSheet(userName: Binding(get: {
+                userName ?? ""
+            }, set: { newValue in
+                userName = newValue
+            }))
         }
+
     }
+    
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView().background(Color.red)
         }
     }
+    
+    struct NameInputSheet: View {
+        @Binding var userName: String
+        @Environment(\.dismiss) private var dismiss
+
+        var body: some View {
+            VStack {
+                TextField("Enter your name", text: $userName)
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Button("Save") {
+                    UserDefaults.standard.set(userName, forKey: "UserName")
+                    dismiss()
+                }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+            }
+            .padding()
+        }
+    }
+
 }

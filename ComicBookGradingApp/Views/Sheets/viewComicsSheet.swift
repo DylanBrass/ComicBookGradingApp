@@ -9,11 +9,33 @@ import Foundation
 import SwiftUI
 
 
+
+struct CustomButtonStyle: ButtonStyle {
+    var color: Color = .green
+    
+    public func makeBody(configuration: CustomButtonStyle.Configuration) -> some View {
+        
+        configuration.label
+            .foregroundColor(.white)
+            .padding(15)
+            .background(RoundedRectangle(cornerRadius: 5).fill(color))
+            .compositingGroup()
+            .shadow(color: .black, radius: 3)
+            .opacity(configuration.isPressed ? 0.5 : 1.0)
+            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+    }
+}
+
 struct ViewComicaSheet: View {
     @ObservedObject var issue = IssuesViewModel()
 
     @State var page: Int = 1
     @Environment(\.dismiss) private var dismiss
+    
+    
+
+
+    
     
     var body: some View {
         VStack{
@@ -28,7 +50,7 @@ struct ViewComicaSheet: View {
                     Text("Previous Page")
                         .padding()
                         
-                })
+                }).buttonStyle(CustomButtonStyle(color: .blue))
                 Button(action: {
                         page = page + 1
                     issue.issues = nil
@@ -38,7 +60,7 @@ struct ViewComicaSheet: View {
                     Text("Next Page")
                         .padding()
                         
-                })            
+                }).buttonStyle(CustomButtonStyle())
                 NavigationView{
                     
                     List{

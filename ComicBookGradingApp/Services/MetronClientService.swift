@@ -1,6 +1,14 @@
 import Foundation
-
-class MetronApiCallService {
+import UIKit
+final class MetronApiCallService : NSObject{
+    
+    static let apiCallService = MetronApiCallService()
+    
+    private override init() {
+        
+    }
+    
+    
     
     func fetchAll(page: Int,completion: @escaping (IssueResponse?) -> Void) {
         print("In fetch all service")
@@ -18,8 +26,7 @@ class MetronApiCallService {
         guard let url = URL(string: url) else { return }
 
         var request = URLRequest(url: url)
-        // Add your authorization header here
-        let token = "RHlsYW5CcmFzczohYjdpMmEyQ2FELUpZdW0=" // Replace with your actual access token
+        let token = "RHlsYW5CcmFzczohYjdpMmEyQ2FELUpZdW0="
         request.addValue("Basic \(token)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in

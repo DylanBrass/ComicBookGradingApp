@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum Cover: String, CaseIterable {
+enum Cover: String, CaseIterable, Codable {
     case BACK
     case FRONT
 

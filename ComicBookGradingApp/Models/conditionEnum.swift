@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Condition: Int, CaseIterable {
+enum Condition: Int, CaseIterable, Codable {
     case noneSelected = 0
     case poor = 1
     case fr = 2

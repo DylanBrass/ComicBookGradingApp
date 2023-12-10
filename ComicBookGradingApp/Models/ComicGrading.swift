@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ComicToBeGraded{
+struct ComicToBeGraded: Codable{
     var id = UUID().uuidString
     var title: String
     var number: Int?
@@ -18,7 +18,7 @@ struct ComicToBeGraded{
     var damagedPages : [Int: Condition]
     var overallCondition : Condition?
     
-    init(title: String, number: Int? = nil, company: String, releaseDate: Date, marketPriceAtNM: Double? = nil, coverCondition: [Cover : Condition], damagedPages: [Int : Condition] = [:], overall : Condition, price : Double) {
+    init(title: String, number: Int? = nil, company: String, releaseDate: Date, marketPriceAtNM: Double? = nil, coverCondition: [Cover : Condition], damagedPages: [Int : Condition] = [:], overall : Condition) {
         self.title = title
         self.number = number
         self.company = company
@@ -27,7 +27,6 @@ struct ComicToBeGraded{
         self.coverCondition = coverCondition
         self.damagedPages = damagedPages
         self.overallCondition = overall
-        self.marketPriceAtNM = price
     }
     
     

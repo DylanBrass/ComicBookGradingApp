@@ -46,7 +46,7 @@ struct CreateComicSheet: View {
             
             
             Text("Price At Near Mint :")
-            TextField("Issue Number :", text: $price).border(Color.black).textFieldStyle(.roundedBorder).keyboardType(.decimalPad)
+            TextField("Price :", text: $price).border(Color.black).textFieldStyle(.roundedBorder).keyboardType(.decimalPad)
             
             HStack{
                 DatePicker(
@@ -88,13 +88,18 @@ struct CreateComicSheet: View {
                         if(num != ""){
                             number = Int(num)
                         }
+                    print("Price : \(price)")
+
                     if(price != ""){
+                        print("Price : \(price)")
                         priceNum = Double(price)
                     }
+              
+
                     let overallCondition = comic.comicGraded?.overallCondition ?? .noneSelected
                     let pages = comic.comicGraded?.damagedPages ?? [:]
                     let cover = comic.comicGraded?.coverCondition ?? [:]
-                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, marketPriceAtNM: priceNum, coverCondition: cover, damagedPages: pages, overall: overallCondition, price: comic.comicGraded?.marketPriceAtNM ?? 0)
+                    let comicBook = ComicToBeGraded(title: self.title, number: number, company: self.company, releaseDate: date, marketPriceAtNM: priceNum, coverCondition: cover, damagedPages: pages, overall: overallCondition)
                     if(comic.comicGraded == nil){
                         comic.startTracking(comicNew: comicBook)
 
