@@ -22,7 +22,7 @@ struct ViewComicaSheet: View {
                     if(page - 1 >= 1){
                         page = page - 1
                         issue.issues = nil
-                        issue.testGetIssues(page: page)
+                        issue.GetIssues(page: page)
                     }
                 }, label: {
                     Text("Previous Page")
@@ -32,7 +32,7 @@ struct ViewComicaSheet: View {
                 Button(action: {
                         page = page + 1
                     issue.issues = nil
-                        issue.testGetIssues(page: page)
+                        issue.GetIssues(page: page)
                     
                 }, label: {
                     Text("Next Page")
@@ -76,7 +76,7 @@ struct ViewComicaSheet: View {
             }
         }.onAppear(perform: {
             if(issue.issues == nil){
-                issue.testGetIssues(page: page)
+                issue.GetIssues(page: page)
             }
         })
     }

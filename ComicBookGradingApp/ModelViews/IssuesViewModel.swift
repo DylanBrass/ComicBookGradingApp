@@ -12,7 +12,7 @@ class IssuesViewModel: ObservableObject{
     
     @Published var issues: IssueResponse? = nil
     
-    func testGetIssues(page:Int){
+    func GetIssues(page:Int){
         print("In test fetch")
         service.fetchAll(page: page, completion:{
             data in
