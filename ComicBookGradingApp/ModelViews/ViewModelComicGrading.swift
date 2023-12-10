@@ -15,9 +15,11 @@ class ComicGradingViewModel: ObservableObject{
     
     @Published var allComics: [ComicToBeGraded] = [ComicToBeGraded(title: "Batman", number: 2, company: "DC", releaseDate: Date.now, marketPriceAtNM: 20.79, coverCondition: [:], damagedPages: [:], overall: Condition.fn, price: 10.0)]
     
+    
     init(){
         
     }
+ 
     
     func getOverallGrade(comic: ComicToBeGraded) -> Int{
         return (comic.overallCondition!.rawValue + getAvgPageGrade(comic: comic) + getAvgCoverGrade(comic: comic)) / 3

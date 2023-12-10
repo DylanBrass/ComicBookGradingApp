@@ -24,6 +24,11 @@
 		6398CDBA2ADD6B4100CF5089 /* ComicBookGradingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398CDB92ADD6B4100CF5089 /* ComicBookGradingAppTests.swift */; };
 		6398CDC42ADD6B4100CF5089 /* ComicBookGradingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398CDC32ADD6B4100CF5089 /* ComicBookGradingAppUITests.swift */; };
 		6398CDC62ADD6B4100CF5089 /* ComicBookGradingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398CDC52ADD6B4100CF5089 /* ComicBookGradingAppUITestsLaunchTests.swift */; };
+		FC165E632B24E43F004D5222 /* MetronClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165E622B24E43F004D5222 /* MetronClientService.swift */; };
+		FC165E652B24E6FB004D5222 /* IssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165E642B24E6FB004D5222 /* IssueResponse.swift */; };
+		FC165E672B24E8AC004D5222 /* IssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165E662B24E8AC004D5222 /* IssuesViewModel.swift */; };
+		FC165E692B25187B004D5222 /* viewComicsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165E682B25187B004D5222 /* viewComicsSheet.swift */; };
+		FC165E6B2B2544BF004D5222 /* ComicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC165E6A2B2544BF004D5222 /* ComicDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		6398CDBF2ADD6B4100CF5089 /* ComicBookGradingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComicBookGradingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6398CDC32ADD6B4100CF5089 /* ComicBookGradingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicBookGradingAppUITests.swift; sourceTree = "<group>"; };
 		6398CDC52ADD6B4100CF5089 /* ComicBookGradingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicBookGradingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FC165E622B24E43F004D5222 /* MetronClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronClientService.swift; sourceTree = "<group>"; };
+		FC165E642B24E6FB004D5222 /* IssueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResponse.swift; sourceTree = "<group>"; };
+		FC165E662B24E8AC004D5222 /* IssuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuesViewModel.swift; sourceTree = "<group>"; };
+		FC165E682B25187B004D5222 /* viewComicsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewComicsSheet.swift; sourceTree = "<group>"; };
+		FC165E6A2B2544BF004D5222 /* ComicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				638842AE2AE6ADA800634E59 /* createComicSheet.swift */,
+				FC165E682B25187B004D5222 /* viewComicsSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -108,6 +119,7 @@
 				6388EAFF2AE0877F00BDB8C0 /* PageDamageReport.swift */,
 				6388EB012AE0892D00BDB8C0 /* AllComics.swift */,
 				6388EB032AE08A3200BDB8C0 /* PickGrade.swift */,
+				FC165E6A2B2544BF004D5222 /* ComicDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +130,7 @@
 				6388EB052AE08AA500BDB8C0 /* ComicGrading.swift */,
 				638842A92AE6A1EC00634E59 /* coverEnum.swift */,
 				638842AB2AE6A21300634E59 /* conditionEnum.swift */,
+				FC165E642B24E6FB004D5222 /* IssueResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -126,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				6388EB072AE0912000BDB8C0 /* ViewModelComicGrading.swift */,
+				FC165E662B24E8AC004D5222 /* IssuesViewModel.swift */,
 			);
 			path = ModelViews;
 			sourceTree = "<group>";
@@ -153,6 +167,7 @@
 		6398CDA72ADD6B3E00CF5089 /* ComicBookGradingApp */ = {
 			isa = PBXGroup;
 			children = (
+				FC165E612B24E33F004D5222 /* Services */,
 				6388EAFA2AE0862E00BDB8C0 /* ModelViews */,
 				6388EAF92AE0862700BDB8C0 /* Models */,
 				6388EAF82AE0861E00BDB8C0 /* Views */,
@@ -187,6 +202,14 @@
 				6398CDC52ADD6B4100CF5089 /* ComicBookGradingAppUITestsLaunchTests.swift */,
 			);
 			path = ComicBookGradingAppUITests;
+			sourceTree = "<group>";
+		};
+		FC165E612B24E33F004D5222 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FC165E622B24E43F004D5222 /* MetronClientService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,8 +344,11 @@
 			files = (
 				6388EB042AE08A3200BDB8C0 /* PickGrade.swift in Sources */,
 				6388EAFC2AE0864200BDB8C0 /* CoverCondition.swift in Sources */,
+				FC165E692B25187B004D5222 /* viewComicsSheet.swift in Sources */,
+				FC165E652B24E6FB004D5222 /* IssueResponse.swift in Sources */,
 				638842AF2AE6ADA800634E59 /* createComicSheet.swift in Sources */,
 				638842AC2AE6A21300634E59 /* conditionEnum.swift in Sources */,
+				FC165E672B24E8AC004D5222 /* IssuesViewModel.swift in Sources */,
 				6398CDAB2ADD6B3E00CF5089 /* ContentView.swift in Sources */,
 				638842AA2AE6A1EC00634E59 /* coverEnum.swift in Sources */,
 				6388EB002AE0877F00BDB8C0 /* PageDamageReport.swift in Sources */,
@@ -330,7 +356,9 @@
 				6388EAFE2AE086B700BDB8C0 /* Index.swift in Sources */,
 				6398CDA92ADD6B3E00CF5089 /* ComicBookGradingAppApp.swift in Sources */,
 				6388EB082AE0912000BDB8C0 /* ViewModelComicGrading.swift in Sources */,
+				FC165E6B2B2544BF004D5222 /* ComicDetails.swift in Sources */,
 				6388EB022AE0892D00BDB8C0 /* AllComics.swift in Sources */,
+				FC165E632B24E43F004D5222 /* MetronClientService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,15 +1,16 @@
 import SwiftUI
 
-
-
 struct ContentView: View {
     
+  
+
     @ObservedObject var comic = ComicGradingViewModel()
     @State var page = 1
+    @State private var isSheetPresented = false
     var body: some View {
-      
+        
         ZStack{
-
+            
             VStack(spacing:0){
                 HStack{
                     Text("Currently Grading \(comic.comicGraded?.title ?? "No Comic")").font(.title2)
@@ -30,7 +31,7 @@ struct ContentView: View {
                     HStack(alignment: .top){
                         if(page > 1){
                             Button{
-                                    page -= 1
+                                page -= 1
                             }label: {
                                 Image(systemName: "arrowshape.turn.up.left.circle.fill")
                                     .padding().foregroundStyle(.white)
@@ -42,19 +43,19 @@ struct ContentView: View {
                         Spacer()
                         if(page < 5){
                             Button{
-                                    page += 1
+                                page += 1
                             }label: {
                                 Image(systemName: "arrowshape.turn.up.right.circle.fill")
                                     .padding().foregroundStyle(.white)
                                     .background(.blue)
                                     .clipShape(.circle)
                                     .scaleEffect(0.75)
-
+                                
                             }
                         }
                     }
                     Divider().frame(height: 2).overlay(.black)
-
+                    
                     
                 }
                 TabView(selection: $page){
@@ -90,8 +91,18 @@ struct ContentView: View {
                     }
                 }
             }
+        }.onAppear(perform: {
+        }) .gesture(
+            MagnificationGesture()
+                .onChanged { value in
+                    if value > 1.5 {
+                        isSheetPresented = true
+                    }
+                }
+              
+        ).sheet(isPresented: $isSheetPresented) {
+            ViewComicaSheet()
         }
-        
     }
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
