@@ -142,6 +142,7 @@ struct ContentView: View {
 
         var body: some View {
             VStack {
+                Text("Enter your name to start !").font(.title)
                 TextField("Enter your name", text: $userName)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
